@@ -1,0 +1,162 @@
+<html>  
+<head>
+    
+    
+    <title>Facebook Registration and Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        #a{
+            margin-right: 10px;
+        }
+        #q{
+            color: blue;
+        }
+        #aa{
+            background-color: blue;
+        }
+        #bb{
+            background-color: blue;
+        }
+        #cc{
+            background-color: blue;
+        }
+        #dd{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- !-- Login Page --> 
+    <div id="a">
+        <h1 id="q">facebook</h1>
+        <p>Connect with friends and the world<br>around you on Facebook</p>
+    </div>
+    <div id="loginPage">
+        <form id="loginForm">
+            <label for="loginUsername">Username:</label>
+            <input type="text" id="loginUsername" name="loginUsername" required>
+    
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" name="loginPassword" required>
+    
+            <button id="aa" type="button" onclick="validateLogin()">Login</button>
+            <p>Forgot Password</p>
+            <button id="bb" onclick="validateOpen()">Create new account</button>
+        </form>
+    </div>
+    <!-- Registration Page -->
+<div id="registrationPage" style="display: none;">
+    <form id="registrationForm">
+        <label for="regUsername">Username:</label>
+        <input type="text" id="regUsername" name="regUsername" required>
+
+        <label for="regPassword">Password:</label>
+        <input type="password" id="regPassword" name="regPassword" required>
+
+        <label for="regConfirmPassword">Confirm Password:</label>
+        <input type="password" id="regConfirmPassword" name="regConfirmPassword" required>
+
+        <button id="cc" type="button" onclick="validateRegistration()">Register</button>
+        <button id="dd" onclick="back()">Back</button>
+        
+    </form>
+</div>
+
+<script>
+    
+    var userData = [];
+
+    function validateRegistration() {
+        var username = document.getElementById('regUsername').value;
+        var password = document.getElementById('regPassword').value;
+        var confirmPassword = document.getElementById('regConfirmPassword').value;
+
+        if (password !== confirmPassword) {
+            alert('Passwords do not match. Please enter matching passwords.');
+            return;
+        }
+
+        
+
+        // Push
+        userData.push({ username: username, password: password });
+
+        alert('Registration successful!\nUsername: ' + username + '\nPassword: ' + password);
+
+        // Clear registration
+        document.getElementById('regUsername').value = '';
+        document.getElementById('regPassword').value = '';
+        document.getElementById('regConfirmPassword').value = '';
+
+        // Switch to the login page
+        document.getElementById('registrationPage').style.display = 'none';
+        document.getElementById('loginPage').style.display = 'block';
+    }
+    function validateOpen() {
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('registrationPage').style.display = 'block';
+    }
+    function back() {
+        document.getElementById('registrationPage').style.display = 'none';
+        document.getElementById('loginPage').style.display = 'block';
+
+    }
+   
+    function validateLogin() {
+        var username = document.getElementById('loginUsername').value;
+        var password = document.getElementById('loginPassword').value;
+
+        
+        var user = userData.find(user => user.username === username && user.password === password);
+
+        if (user) {
+            alert('Login successful!');
+            
+        } else {
+            alert('Invalid username or password. Please try again.');
+        }
+
+        // Clear login 
+        document.getElementById('loginUsername').value = '';
+        document.getElementById('loginPassword').value = '';
+         
+    }
+    
+</script> 
