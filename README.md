@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @Dijoln
+- 👋 Hi, I’m @Dijolin
 - 👀 I’m interested in software developer
 - 🌱 I’m currently learning full stack developer
 -  📫 How to reach me in email:dijolinmanoji@gmail.com
